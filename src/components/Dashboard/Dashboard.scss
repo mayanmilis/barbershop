@@ -1,0 +1,172 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+.container{
+    height: 100vh;
+    width: 100%;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+.container::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+    border-radius: 10px;
+}
+.container::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+.container::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+	background-image: -webkit-repeating-linear-gradient(-45deg, rgb(0, 132, 255) , white 10%, red 15%, white 20%, rgb(0, 132, 255) 25%)
+                                              
+}
+    section{
+        height: 100vh;
+        width: 100%;
+        scroll-snap-align: start;
+        .fade{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.589);
+
+        }
+        .container{
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.664);
+            color: rgb(255, 255, 255);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .header{
+            display: flex;
+            flex-direction: column;
+        }
+        .text{
+            padding-top: 40px;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+        .homeButtons{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            button{
+                width: 150px;
+                height: 50px;
+                background-color: transparent;
+                color: white;
+                border: 3px solid white;
+                font-weight: 700;
+                font-size: 1em;
+                margin: 5px;
+                transition: 300ms;
+                span{
+                    margin: 5px;
+                }
+                a{
+                    color: white;
+                    text-decoration: none;
+                }
+            }
+            button:hover{
+                color:black;
+                background-color: rgb(255, 255, 255);
+                cursor: pointer;
+                transition: 300ms;
+                a{
+                    color: black;
+                }
+            }
+            button:focus{
+                outline: none;
+            }
+            button:active{
+                background-color: rgba(255, 255, 255, 0.787);
+                border: none;
+            }
+        }
+        h1{
+            font-size: 5em;
+        }
+        h3{
+            font-size: 2em;
+        }
+        p{
+            font-size: 1.5em;
+        }
+    }
+    .servicesBlocks{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width:100%;
+        background-color: rgb(255, 255, 255);
+        ul{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            list-style: none;
+            height: 300px;;
+            border: 2px solid red;
+
+            li{
+                background-color: white;
+                color: black;
+                width: 300px;
+                margin: 20px;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                text-align: center;
+                border: 2px solid red;
+                .img{
+                    border: 1px solid red;
+                    width: 200px;
+                    height: 200px;
+                    display: flex;
+                    justify-content: center;
+
+                    img{
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
+    #home{
+        
+        background-image: url("../../images/barber_shop.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+    #services{
+        background-image: url("../../images/services.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+    #about{
+        background-image: url("../../images/about.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+
