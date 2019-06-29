@@ -1,10 +1,43 @@
 import React, {Component} from 'react';
 import NavLinks from '../NavLinks/Navlinks';
 import imgMen from '../../images/men.png';
+import imgWomen from '../../images/women.png';
+import imgProducts from '../../images/products.png';
+import aboutPhoto from '../../images/aboutPhoto.jpg';
 import './Dashboard.scss'
 
 
 class Dashboard extends Component {
+    componentDidMount(){
+        this.initMap();
+    }
+
+    initMap = () => {
+        let map = new window.google.maps.Map(document.getElementById('map'), {
+          center: {lat: 32.089179, lng: 34.877495},
+          zoom: 14
+        });
+        let marker = new window.google.maps.Marker({
+            position: {lat: 32.089179, lng: 34.877495},
+            map: map,
+            title: 'Barber Shop!'
+          });
+
+          marker.addListener('click', function() {
+            infowindow.open(map, marker);
+          });
+            let contentString = '<div>'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Barber Shop</h1>'+
+            '<a href="http://localhost:3000">Visit website</a>'+
+            '</div>'+
+            '</div>';
+
+        let infowindow = new window.google.maps.InfoWindow({
+            content: contentString
+        });
+      }
 
     render() {
         return(
@@ -25,9 +58,9 @@ class Dashboard extends Component {
                                 <div className="homeButtons">
                                     <button>
                                             <span>BOOK NOW</span> 
-                                            <span><i class="far fa-calendar-alt"></i></span>
+                                            <span><i className="far fa-calendar-alt"></i></span>
                                         </button>
-                                    <a href="#services"><button>OUR SERVICES</button></a>
+                                    <a id="scroll" href="#services"><i className="fas fa-chevron-down"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -37,33 +70,113 @@ class Dashboard extends Component {
                             <div className="container">
                                 <h1>All Services Under One Roof </h1>
                                 <div className="servicesBlocks">
+                                    <h2>We Specialize In Men and Women Hair Styling and Beauty Products</h2>
                                     <ul>
                                         <li>
-                                            <div>
-                                                <h3>Gentelmens</h3>
-                                                <div className="img">
-                                                     <img src={imgMen}/>
+                                            <div className="flip-card">
+                                                <div className="flip-card-inner">
+                                                        <div className="flip-card-front">
+                                                            <h3>Gentelmens</h3>
+                                                            <div className="imgContainer">
+                                                                <img src={imgMen}/>
+                                                            </div>
+                                                        </div>
+                                                        <div id="menBack" className="flip-card-back"> 
+                                                            <div className="card-back-fade">
+                                                                <div className="content">
+                                                                <div className="text">
+                                                                    <p>Whether you're a Viking or Hipster, Average Guy or Extremely Different</p> 
+                                                                    <p>Your Place Is With Us!</p>
+                                                                </div>
+                                                                <div className="button">
+                                                                    <a><button>Men Hair Style Gallery</button></a>
+                                                                </div> 
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                 </div>
                                             </div>
                                         </li>
                                         <li>
-                                            <div>
-                                                <h3>Ladies</h3>
-                                            </div>
+                                            <div className="flip-card">
+                                                    <div className="flip-card-inner">
+                                                            <div className="flip-card-front">
+                                                                <h3>Ladies</h3>
+                                                                <div className="imgContainer">
+                                                                    <img src={imgWomen}/>
+                                                                </div>
+                                                            </div>
+                                                            <div id="womenBack" className="flip-card-back">
+                                                                <div className="card-back-fade">
+                                                                    <div className="content">
+                                                                        <div className="text">
+                                                                            <p>Whether you're a Short or Long Hair Type, Special Ocation or Every-Day Style</p> 
+                                                                            <p>Your Place Is With Us!</p>
+                                                                        </div>
+                                                                        <div className="button">
+                                                                            <a><button>Men Hair Style Gallery</button></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                    </div>
+                                                </div>
                                         </li>
                                         <li>
-                                            <h3>Beauty Products</h3>
+                                            <div className="flip-card">
+                                                    <div className="flip-card-inner">
+                                                            <div className="flip-card-front">
+                                                                <h3>Beauty Products</h3>
+                                                                <div className="imgContainer">
+                                                                    <img id="product" src={imgProducts}/>
+                                                                </div>
+                                                            </div>
+                                                            <div id="productsBack" className="flip-card-back">
+                                                                <div className="card-back-fade">
+                                                                    <div className="content">
+                                                                        <div className="text">
+                                                                            <p>Be Unique and Try Our Products Which Made From Top Quality Materials</p>
+                                                                        </div>
+                                                                        <div className="button">
+                                                                            <a><button>Products Gallery</button></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                    </div>
+                                                </div>
                                         </li>
                                     </ul>
                                 </div>
-                                <p>Something about SERVICES</p>
                             </div>
                         </div>
                     </section>
                     <section id="about">
                         <div className="fade">
-                            <h1>ABOUT</h1>
-                            <p>Something about ABOUT</p>
+                            <div className="container">
+                                <div className="img-container">
+                                    <div className="img">
+                                        <img src={aboutPhoto}/>
+                                    </div>
+                                    <div className="imgText">
+                                        <h1>How The Story Begins</h1>
+                                        <p>The story begins in 1999.
+                                            A young boy who wanted to get his hair cut every two weeks and his parents could not afford it.
+                                            The same boy asked for his birthday a trimmer.
+                                            From that day on he began to cut his own hair. Slowly friends came to get a haircut. And after that customers began to hear about this boy.
+                                            The boy grew up and set up his first barber shop. 
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="details">
+                                    <div id="map"></div>
+                                    <div className="reviews">
+                                        <h1>Our Customers</h1>
+                                        <p>our customers says all kind of things about us.</p>
+                                        <button>See Customers Reviews</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </section>
             </div>
