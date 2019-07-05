@@ -4,17 +4,17 @@ import imgMen from '../../images/men.png';
 import imgWomen from '../../images/women.png';
 import imgProducts from '../../images/products.png';
 import aboutPhoto from '../../images/aboutPhoto.jpg';
-import Calendar from 'react-calendar';
+import CalendarModal from '../CalendarModal/CalendarModal';
+import BookModal from '../Book/BookModal';
 import './Dashboard.scss'
 
 
 class Dashboard extends Component {
 
     state = {
-        date: new Date(),
+        calendarOpen: false,
+        isBookOpen: false
       }
-     
-      onChange = date => this.setState({ date })
 
     componentDidMount(){
         this.initMap();
@@ -47,30 +47,40 @@ class Dashboard extends Component {
         });
       }
 
+      calendarOpen = () =>{
+          let calendarOpen = this.state.calendarOpen;
+          this.setState({
+              calendarOpen: !calendarOpen
+          });
+      }
+
+      calendarClose = () =>{
+        this.setState({
+            calendarOpen: false
+        });
+      }
+
+      bookOpen = () =>{
+          let bookOpen = this.state.bookOpen;
+          this.setState({
+              bookOpen: !bookOpen,
+          });
+      }
 
     render() {
-        let date;
-        if(this.state.date){
-            date = this.state.date;
-            console.log(date.toString())
-            date = date.toString();
-            // date = date.toString();
-        }else{
-            return date = "Choose Date";
-        }
         return(
             <div className="container">
                     <NavLinks/>
                     <section id="home">
-                    <div className="calendar">
-                                            <Calendar
-                                                onChange={this.onChange}
-                                                value={this.state.date}
-                                                calendarType="Hebrew"
-                                                tileDisabled={this.tileDisabled}
-                                            />
-                                           {date }
-                                        </div>
+                        <CalendarModal 
+                        calendarOpen={this.state.calendarOpen}
+                        calendarClose={this.calendarClose}
+                        bookOpen={this.bookOpen}
+                        />
+                        <BookModal
+                        isBookOpen={this.state.bookOpen}
+                        calendarClose={this.calendarClose}
+                        />
                         <div className="fade">
                             <div className="container">
                                 <div className="header">
@@ -83,7 +93,7 @@ class Dashboard extends Component {
                                     <p>You'll get these kind of questions anywhere you go!</p>
                                 </div>
                                 <div className="homeButtons">
-                                    <button>
+                                    <button onClick={this.calendarOpen}>
                                             <span>BOOK NOW</span> 
                                             <span><i className="far fa-calendar-alt"></i></span>
                                         </button>
