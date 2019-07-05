@@ -4,10 +4,18 @@ import imgMen from '../../images/men.png';
 import imgWomen from '../../images/women.png';
 import imgProducts from '../../images/products.png';
 import aboutPhoto from '../../images/aboutPhoto.jpg';
+import Calendar from 'react-calendar';
 import './Dashboard.scss'
 
 
 class Dashboard extends Component {
+
+    state = {
+        date: new Date(),
+      }
+     
+      onChange = date => this.setState({ date })
+
     componentDidMount(){
         this.initMap();
     }
@@ -39,11 +47,30 @@ class Dashboard extends Component {
         });
       }
 
+
     render() {
+        let date;
+        if(this.state.date){
+            date = this.state.date;
+            console.log(date.toString())
+            date = date.toString();
+            // date = date.toString();
+        }else{
+            return date = "Choose Date";
+        }
         return(
             <div className="container">
                     <NavLinks/>
                     <section id="home">
+                    <div className="calendar">
+                                            <Calendar
+                                                onChange={this.onChange}
+                                                value={this.state.date}
+                                                calendarType="Hebrew"
+                                                tileDisabled={this.tileDisabled}
+                                            />
+                                           {date }
+                                        </div>
                         <div className="fade">
                             <div className="container">
                                 <div className="header">
@@ -114,7 +141,7 @@ class Dashboard extends Component {
                                                                             <p>Your Place Is With Us!</p>
                                                                         </div>
                                                                         <div className="button">
-                                                                            <a><button>Men Hair Style Gallery</button></a>
+                                                                            <a><button>Wom   en Hair Style Gallery</button></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
