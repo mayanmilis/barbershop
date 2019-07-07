@@ -9,7 +9,6 @@
     align-items: center;
     background-color: rgba(0, 0, 0, 0.931);
     z-index: 2;
-    border: 2px solid red;
     
     .calendar-container{
         display: flex;
@@ -18,11 +17,51 @@
         align-items: center;
         color: black;
         background-color: black;
-        .book{
-            border: 2px solid green;
+        .book-modal-container{
+            background-color: white;
             width: 500px;
             height: 300px;
+            padding: 20px;
+            color: red;
+            .book-choose-gender{
+                height: 40%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                .buttons-container{
+                    width: 300px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    align-items: center;
+                }
+                h1{
+                    font-size: 0.5em;
+                    
+                }
+                button{
+                    width: 100px;
+                    height: 30px;
+                    border: 2px solid black;
+                    color: black;
+                    background-color: transparent;
+                    font-weight: 700;
+                    transition: 300ms;
+                }
+                button:hover{
+                    background-color: black;
+                    color: white;
+                    cursor: pointer;
+                }
+                button:focus{
+                    background-color: black;
+                    color: white;
+                    outline: none;
+                }
+            }
         }
+
         .calendar-buttons{
             display: flex;
             flex-direction: row;

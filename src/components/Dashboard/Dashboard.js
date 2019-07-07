@@ -67,6 +67,12 @@ class Dashboard extends Component {
           });
       }
 
+      bookClose = () =>{
+        this.setState({
+            bookOpen: false,
+        });
+    }
+
     render() {
         return(
             <div className="container">
@@ -80,6 +86,8 @@ class Dashboard extends Component {
                         <BookModal
                         isBookOpen={this.state.bookOpen}
                         calendarClose={this.calendarClose}
+                        bookClose={this.bookClose}
+                        calendarOpen={this.calendarOpen}
                         />
                         <div className="fade">
                             <div className="container">
