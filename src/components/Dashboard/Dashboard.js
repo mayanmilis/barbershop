@@ -6,6 +6,7 @@ import imgProducts from '../../images/products.png';
 import aboutPhoto from '../../images/aboutPhoto.jpg';
 import CalendarModal from '../CalendarModal/CalendarModal';
 import BookModal from '../Book/BookModal';
+import ConfirmationModal from '../Book/ConfirmationModal';
 import './Dashboard.scss'
 
 
@@ -13,7 +14,8 @@ class Dashboard extends Component {
 
     state = {
         calendarOpen: false,
-        isBookOpen: false
+        isBookOpen: false,
+        confirmationOpen: false
       }
 
     componentDidMount(){
@@ -73,7 +75,15 @@ class Dashboard extends Component {
         });
     }
 
+    confirmationOpen = () =>{
+        let confirmationOpen = this.state.confirmationOpen;
+        this.setState({
+            confirmationOpen: !confirmationOpen,
+        });
+    }
+
     render() {
+        console.log(this.state.confirmationOpen)
         return(
             <div className="container">
                     <NavLinks/>
@@ -88,6 +98,10 @@ class Dashboard extends Component {
                         calendarClose={this.calendarClose}
                         bookClose={this.bookClose}
                         calendarOpen={this.calendarOpen}
+                        confirmationOpen={this.confirmationOpen}
+                        />
+                        <ConfirmationModal
+                        confirmationOpen={this.state.confirmationOpen}
                         />
                         <div className="fade">
                             <div className="container">

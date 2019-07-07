@@ -1,19 +1,25 @@
 import React, {Component} from 'react';
+import Time from './Time/Time';
 import './Book.scss';
 
 class Book extends Component {
     state ={
         book:{
-            "9:00": "Available",
-            "9:30": "Available",
-            "10:00": "Available",
-            "10:30": "Available",
-            "11:00": "Available",
-            "11:30": "Available",
-            "12:00": "Available"
+            "9:00": true,
+            "9:30": true,
+            "10:00": true,
+            "10:30": false,
+            "11:00": true,
+            "11:30": true,
+            "12:00": true
         },
         chosenTime: null
+    }
 
+    chosenTime = (time) =>{
+        this.setState({
+            chosenTime: time
+        })
     }
 
     render() {
@@ -27,21 +33,30 @@ class Book extends Component {
             }
 
             console.log(arr);
+            console.log(this.state.chosenTime);
             return(
                 <div className="book">
                     <h3>Choose Time</h3>
                     <ul>
                         {arr&&arr.map(item =>{
+                            let time=item[0];
+                            let isAvailable=item[1];
+                            let style;
+                            if(isAvailable){
+                                style = "available";
+                                if(this.state.chosenTime===time){
+                                    style = "chosen-time"
+                                }
+                            }else{
+                                style = "not-available";
+                            }
                             return(
-                                <li>
-                                    <div className="time-container">
-                                        <div className="time">
-                                            {item[0]}
-                                        </div>
-                                        <div className="is-available">
-                                            {item[1]}
-                                        </div>
-                                    </div>
+                                <li key={time} className={style}>
+                                    <Time
+                                    time={time}
+                                    isAvailable={isAvailable}
+                                    chosenTime={this.chosenTime}
+                                    />
                                 </li>
                             )
                         })}

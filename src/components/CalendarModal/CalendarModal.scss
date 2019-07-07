@@ -17,12 +17,21 @@
         align-items: center;
         color: black;
         background-color: black;
+        .confirmation-modal-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            background-color: white;
+            width: 500px;
+            height: 300px;
+            padding: 20px;
+        }
         .book-modal-container{
             background-color: white;
             width: 500px;
             height: 300px;
             padding: 20px;
-            color: red;
             .book-choose-gender{
                 height: 40%;
                 display: flex;
@@ -61,6 +70,7 @@
                 }
             }
         }
+
 
         .calendar-buttons{
             display: flex;

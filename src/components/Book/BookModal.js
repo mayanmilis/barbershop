@@ -28,8 +28,12 @@ class BookModal extends Component {
     });
   }
 
+  homaPage = () => {
+    setTimeout(()=> window.location = "/", 3000);
+  }
+
   render() {
-      const {bookOpen,isBookOpen,calendarClose,bookClose,calendarOpen} = this.props;
+      const {bookOpen,isBookOpen,calendarClose,bookClose,calendarOpen,confirmationOpen} = this.props;
       if(isBookOpen){
         return (
             <div className="calendar-modal">
@@ -47,7 +51,6 @@ class BookModal extends Component {
                         isWoman={this.state.isWoman}
                       />
                   </div>
-
                   <div className="calendar-buttons">
                     <button onClick={
                         () =>{
@@ -55,7 +58,12 @@ class BookModal extends Component {
                             calendarOpen();
                         } 
                     }>BACK</button>
-                    <button>CONTINUE</button>
+                    <button onClick={
+                      () =>{
+                      bookClose();
+                      confirmationOpen();
+                      this.homaPage();
+                    }}>CONTINUE</button>
                   </div>
               </div>
             </div>
