@@ -1,0 +1,49 @@
+.gallery{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    padding-top: 40px;
+    .header{
+        border: 1px solid red;
+        height: 20%;
+    }
+    .gallery-container{
+        border: 10px solid purple;
+        display: flex;
+        justify-content: center;
+        ul{
+            border: 1px solid blue;
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            li{
+                width: 200px;
+                height: 300px;
+                border: 1px solid salmon;
+            }
+        }
+    }
+    .item{
+        height: 100%;
+        width: 100%;
+        .item-container{
+            height: 100%;
+            width: 100%;
+            border: 2px solid orange;
+            .img{
+                height: 80%;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                border: 1px solid green;
+            }
+            .description{
+                height: 10%;
+                border: 5px solid purple;
+            }
+        }
+    }
+}

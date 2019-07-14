@@ -173,7 +173,7 @@ class Dashboard extends Component {
                                                                             <p>Your Place Is With Us!</p>
                                                                         </div>
                                                                         <div className="button">
-                                                                            <a><button>Wom   en Hair Style Gallery</button></a>
+                                                                            <a><button>Women Hair Style Gallery</button></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
