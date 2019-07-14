@@ -1,0 +1,79 @@
+.upload-img{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(2, 29, 59);
+    .upload-img-container{
+        background-color: rgb(221, 221, 221);
+        width: 60%;
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        h1{
+            margin-bottom: 20px;
+        }
+        .select-file{
+            height: 20%;
+            width: 60%;
+            background-color: white;
+            border-radius: 5px;
+
+            // border: 2px solid red;
+            .file-description{
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                // border: 2px solid purple;
+                height: 50%;
+            }
+        }
+        .file-preview{
+            height: 30%;
+            width: 60%;
+            // border: 2px solid blue;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 20px;
+            #img{
+                height: 100%;
+                width: 100%;
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        }
+        .upload-file{
+            height: 20%;
+            display: flex;
+            justify-content: center;
+            // border: 2px solid green;
+            height: 50%;
+            button{
+                height: 50px;
+                width: 100px;
+                background-color: rgb(255, 255, 255);
+                border: 2px solid black;
+                transition: 200ms;
+                font-weight: 700;
+            }
+            button:hover{
+                background-color: rgb(209, 209, 209);
+                cursor: pointer;
+            }
+        }
+        .upload-succeed{
+            p{
+                font-size: 2em;
+                font-weight: 700;
+                color: black;
+                transition: 200ms;
+            }
+        }
+    }
+}
