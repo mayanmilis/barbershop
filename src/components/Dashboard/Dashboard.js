@@ -144,11 +144,11 @@ class Dashboard extends Component {
                                                             <div className="card-back-fade">
                                                                 <div className="content">
                                                                 <div className="text">
-                                                                    <p>Whether you're a Viking or Hipster, Average Guy or Extremely Different</p> 
+                                                                    <p>Whether you're a Viking or a Hipster, Average Guy or Extremely Different</p> 
                                                                     <p>Your Place Is With Us!</p>
                                                                 </div>
                                                                 <div className="button">
-                                                                    <a><button>Men Hair Style Gallery</button></a>
+                                                                    <a href="http://localhost:3000/gallery/men"><button>Men Hair Style Gallery</button></a>
                                                                 </div> 
                                                                 </div>
                                                             </div>
@@ -169,11 +169,11 @@ class Dashboard extends Component {
                                                                 <div className="card-back-fade">
                                                                     <div className="content">
                                                                         <div className="text">
-                                                                            <p>Whether you're a Short or Long Hair Type, Special Ocation or Every-Day Style</p> 
+                                                                            <p>Whether you're a Short or Long Hair Type, Special Occasion or Every-Day Style</p> 
                                                                             <p>Your Place Is With Us!</p>
                                                                         </div>
                                                                         <div className="button">
-                                                                            <a><button>Women Hair Style Gallery</button></a>
+                                                                            <a href="http://localhost:3000/gallery/women"><button>Women Hair Style Gallery</button></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -194,10 +194,10 @@ class Dashboard extends Component {
                                                                 <div className="card-back-fade">
                                                                     <div className="content">
                                                                         <div className="text">
-                                                                            <p>Be Unique and Try Our Products Which Made From Top Quality Materials</p>
+                                                                            <p>Be Unique and Try Our Products Which are Made From Top Quality Materials</p>
                                                                         </div>
                                                                         <div className="button">
-                                                                            <a><button>Products Gallery</button></a>
+                                                                            <a href="http://localhost:3000/gallery/products"><button>Products Gallery</button></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>

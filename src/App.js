@@ -11,7 +11,7 @@ function App() {
         <Route exact path="/" component={Dashboard}/>
         <Route path="/book/:id" component={Book}/>
         <Route path="/uploadImg" component={UploadImg}/>
-        <Route path="/gallery" component={Gallery}/>
+        <Route path="/gallery/:category" component={Gallery}/>
 
     </BrowserRouter>
   );

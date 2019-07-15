@@ -251,6 +251,7 @@
         }
       }
     #home{
+        -webkit-animation: fadein 2s;
         background-image: url("../../images/barber_shop.jpg");
         background-position: center;
         background-size: cover;
@@ -271,6 +272,7 @@
     }
 
     #services{
+        -webkit-animation: fadein 2s;
         background-image: url("../../images/services.jpg");
         background-position: center;
         background-size: cover;
@@ -285,6 +287,7 @@
         }
     }
     #about{
+        -webkit-animation: fadein 2s;
         background-image: url("../../images/about.jpg");
         background-position: center;
         background-size: cover;
@@ -435,3 +438,4 @@
             text-decoration: none;
         }
     }
+    
