@@ -12,8 +12,8 @@
 }
 .container::-webkit-scrollbar-track
 {
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    background-color: #F5F5F5;
+	-webkit-box-shadow: inset 0 0 6px rgba(236, 6, 6, 0.3);
+    background-color: rgb(255, 255, 255);
     border-radius: 10px;
 }
 .container::-webkit-scrollbar
@@ -25,7 +25,7 @@
 .container::-webkit-scrollbar-thumb
 {
     border-radius: 10px;
-	background-image: -webkit-repeating-linear-gradient(-45deg, rgb(0, 132, 255) , white 10%, red 15%, white 20%, rgb(0, 132, 255) 25%)
+	background-image: -webkit-repeating-linear-gradient(90deg,  rgb(255, 166, 0) 15%, rgb(255, 196, 45) 20%, rgb(255, 196, 45) 25%)
                                               
 }
     section{

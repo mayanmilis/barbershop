@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './Gallery.scss';
 import Item from './Item';
 import NavLinks from '../NavLinks/Navlinks';
+import {getData} from '../../store/actions/getDataAction';
+import {connect} from 'react-redux';
 import {database} from '../../fbConfig/fbConfig';
 
 
@@ -12,39 +14,43 @@ class Gallery extends Component {
     }
 
     componentWillMount(){
-        this.getData();
-    }
-
-    getData = () =>{
-        let data = [];
         let category = this.props.match.params.category;
-        database.collection("Images").get().then(function(querySnapshot) {
-            querySnapshot.forEach(function(doc) {
-                // doc.data() is never undefined for query doc snapshots
-                if(doc.data().category===category){
-                    data.push({id:doc.id,data:doc.data()})
-                    console.log(doc.id, " => ", doc.data());
-                }
-
-            });
-        }).then(()=>{
-            this.setState({
-                data: data
-            })
-        })
+        this.props.getData(category)
     }
+
+    // getData = () =>{
+    //     let data = [];
+    //     let category = this.props.match.params.category;
+    //     database.collection("Images").get().then(function(querySnapshot) {
+    //         querySnapshot.forEach(function(doc) {
+    //             // doc.data() is never undefined for query doc snapshots
+    //             if(doc.data().category===category){
+    //                 data.push({id:doc.id,data:doc.data()})
+    //                 console.log(doc.id, " => ", doc.data());
+    //             }
+
+    //         });
+    //     }).then(()=>{
+    //         this.setState({
+    //             data: data
+    //         })
+    //     })
+    // }
   render() {
-      console.log(this.props)
-      let data = this.state.data;
-      let category = this.props.match.params.category.toUpperCase();
+      let {data} = this.props;
+      let category = this.props.match.params.category;
+      console.log(data)
+      let header = category.toUpperCase()
   return (
       <div>
-                <NavLinks/>
                 <div className="gallery">
                     <div className="gallery-container">
                         <div className="header">
-                            <h1>{category}</h1>
+                            <div className="h1-container">
+                                <h1>{header}</h1>
+                            </div>
                         </div>
+                    <div className="items-container">
                         <ul>
                             {data&&data.map(item => {
                                 return(
@@ -53,11 +59,13 @@ class Gallery extends Component {
                                             id={item.id}
                                             name={item.data.modelName}
                                             imgUrl={item.data.url}
+                                            category={category}
                                         />
                                     </li>
                                 )
                             })}
                         </ul>
+                    </div>
                     </div>
                 </div>
       </div>
@@ -66,4 +74,19 @@ class Gallery extends Component {
   }
 }
 
-export default Gallery
+const mapStateToProps = (state) => {
+    let data = state;
+    data = data.data;
+    console.log(state.data)
+    return {
+      data: state.data
+    }
+  }
+  
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      getData: (category) => dispatch(getData(category))
+    }
+  }
+
+export default connect(mapStateToProps,mapDispatchToProps)(Gallery)

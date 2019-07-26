@@ -86,7 +86,6 @@ class Dashboard extends Component {
         console.log(this.state.confirmationOpen)
         return(
             <div className="container">
-                    <NavLinks/>
                     <section id="home">
                         <CalendarModal 
                         calendarOpen={this.state.calendarOpen}
