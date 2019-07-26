@@ -7,10 +7,10 @@ export const getData = (category) => {
         database.collection("Images").get().then(function(querySnapshot) {
             querySnapshot.forEach(function(doc) {
                 // doc.data() is never undefined for query doc snapshots
-                if(doc.data().category===category){
+                // if(doc.data().category===category){
                     data.push({id:doc.id,data:doc.data()})
                     // console.log(doc.id, " => ", doc.data());
-                }
+                // }
             });
         })
         .then(() =>{

@@ -14,13 +14,6 @@ class Item extends Component {
           <div className="item-container">
               <div className="item-details">
                 <Link to={`/gallery/${category}/${id}`}>More Details</Link>
-                <div  style={{display:'none'}}>
-                  {/* <ItemDetails
-                    name={name}
-                    imgUrl={imgUrl}
-                    yona="yonaaaaaaaaaaaaaaaa"
-                  /> */}
-                </div>
               </div>
               <div className="img" style={{backgroundImage: `url(${imgUrl})`}}></div>
               <div className="description">

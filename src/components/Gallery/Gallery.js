@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './Gallery.scss';
 import Item from './Item';
-import NavLinks from '../NavLinks/Navlinks';
 import {getData} from '../../store/actions/getDataAction';
 import {connect} from 'react-redux';
-import {database} from '../../fbConfig/fbConfig';
 
 
 class Gallery extends Component {
@@ -39,7 +37,7 @@ class Gallery extends Component {
   render() {
       let {data} = this.props;
       let category = this.props.match.params.category;
-      console.log(data)
+      console.log(this.props)
       let header = category.toUpperCase()
   return (
       <div>
@@ -74,12 +72,16 @@ class Gallery extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-    let data = state;
-    data = data.data;
-    console.log(state.data)
+const mapStateToProps = (state, ownProps) => {
+    let categoryData = [];
+    let data = state.data;
+    data.map(item =>{
+        if(item.data.category===ownProps.match.params.category){
+            categoryData.push(item)
+        }
+    });
     return {
-      data: state.data
+      data: categoryData
     }
   }
   
