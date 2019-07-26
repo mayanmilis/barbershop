@@ -13,6 +13,15 @@ const cartReducer = (state = initialState, action) =>{
             ...state,
             data: newData
             };
+        case 'GET_DATA_BY_ID':
+            let newDataById = action.data;
+            console.log('got the data by id!', newDataById)
+            return{
+            ...state,
+            data: newDataById
+            };   
+        case 'GET_DATA_BY_ID_ERR':
+            console.log('something went wrong', action.err)
         case 'GET_DATA_ERR':
                 console.log('something went wrong', action.err)
         case 'ADD_TO_CART':

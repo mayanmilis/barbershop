@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Gallery.scss';
 import Item from './Item';
-import {getData} from '../../store/actions/getDataAction';
+import {getDataByCategory} from '../../store/actions/getDataAction';
 import {connect} from 'react-redux';
 
 
@@ -13,7 +13,7 @@ class Gallery extends Component {
 
     componentWillMount(){
         let category = this.props.match.params.category;
-        this.props.getData(category)
+        this.props.getDataByCategory(category)
     }
 
     // getData = () =>{
@@ -87,7 +87,7 @@ const mapStateToProps = (state, ownProps) => {
   
   const mapDispatchToProps = (dispatch) => {
     return {
-      getData: (category) => dispatch(getData(category))
+      getDataByCategory: (category) => dispatch(getDataByCategory(category))
     }
   }
 
