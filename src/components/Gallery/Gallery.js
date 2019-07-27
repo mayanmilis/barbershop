@@ -13,31 +13,13 @@ class Gallery extends Component {
 
     componentWillMount(){
         let category = this.props.match.params.category;
-        this.props.getDataByCategory(category)
+        const id = this.props.match.params.id;
+        this.props.getDataByCategory(category, id)
     }
 
-    // getData = () =>{
-    //     let data = [];
-    //     let category = this.props.match.params.category;
-    //     database.collection("Images").get().then(function(querySnapshot) {
-    //         querySnapshot.forEach(function(doc) {
-    //             // doc.data() is never undefined for query doc snapshots
-    //             if(doc.data().category===category){
-    //                 data.push({id:doc.id,data:doc.data()})
-    //                 console.log(doc.id, " => ", doc.data());
-    //             }
-
-    //         });
-    //     }).then(()=>{
-    //         this.setState({
-    //             data: data
-    //         })
-    //     })
-    // }
   render() {
       let {data} = this.props;
       let category = this.props.match.params.category;
-      console.log(this.props)
       let header = category.toUpperCase()
   return (
       <div>
@@ -87,7 +69,7 @@ const mapStateToProps = (state, ownProps) => {
   
   const mapDispatchToProps = (dispatch) => {
     return {
-      getDataByCategory: (category) => dispatch(getDataByCategory(category))
+      getDataByCategory: (category, id) => dispatch(getDataByCategory(category, id))
     }
   }
 

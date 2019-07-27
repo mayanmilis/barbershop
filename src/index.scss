@@ -5,6 +5,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  button{
+    cursor: pointer;
+  }
+  button:hover{
+    transition: 200ms;
+  }
+  button:focus, input:focus{
+    outline: none;
+}
 }
 
 code {

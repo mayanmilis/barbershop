@@ -7,7 +7,6 @@ class Item extends Component {
 
   render() {
       const {id,name,imgUrl,category} = this.props;
-      console.log(this.props);
       if(category==="products"){
         return(
           <div className="item">

@@ -113,4 +113,72 @@
 .item-details-container{
     display: flex;
     flex-direction: row;
+    .price-container{
+        // border: 1px solid red;
+        width: 400px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        .amount{
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            input{
+                width: 40px;
+                text-align: center;
+            }
+            input[type=number]::-webkit-inner-spin-button, 
+            input[type=number]::-webkit-outer-spin-button { 
+                -webkit-appearance: none;
+                appearance: none;
+            }
+            button{
+                width: 40px;
+                height: 40px;
+                border: 2px solid white;
+                background-color: black;
+                color: white;
+                font-weight: 700;
+            }
+            button:hover{
+                background-color: white;
+                color: black;
+                border: 1px solid black;
+            }
+
+        }
+        .price{
+            width: 50%;
+            display: flex;
+            justify-content: center;
+        }
+    }
+    .checkout{
+        width: 400px;
+        // border: 1px solid green;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        button{
+            width: 50%;
+            height: 50px;
+            border: 2px solid white;
+            background-color: black;
+            color: white;
+            font-weight: 700;
+        }
+        button:hover{
+            background-color: white;
+            color: black;
+            border: 1px solid black;
+        }
+        button:focus{
+            outline: none;
+        }
+    }
+    .description{
+        width: 600px;
+        font-size: 1.2em;
+    }
 }
