@@ -55,15 +55,10 @@ class Gallery extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    let categoryData = [];
+    console.log(state)
     let data = state.data;
-    data.map(item =>{
-        if(item.data.category===ownProps.match.params.category){
-            categoryData.push(item)
-        }
-    });
     return {
-      data: categoryData
+      data: data
     }
   }
   

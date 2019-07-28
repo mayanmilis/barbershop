@@ -44,7 +44,8 @@ export const getDataByCategory = (category) => {
 
 export const getDataById = (id,category) => {
         let key = JSON.parse(sessionStorage.getItem(category));
-        if(key[id]){
+        console.log(key)
+        if(key){
             console.log('from session');            
             return(dispatch) =>{
                 let data = key[id];
