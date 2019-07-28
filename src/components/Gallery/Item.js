@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Gallery.scss';
-import ItemDetails from './ItemDetails';
 
 class Item extends Component {
 

@@ -8,26 +8,39 @@ import {connect} from 'react-redux';
 class Gallery extends Component {
 
     state ={
-        data: ''
+        searchInput: ''
     }
 
     componentWillMount(){
         let category = this.props.match.params.category;
         const id = this.props.match.params.id;
-        this.props.getDataByCategory(category, id)
+        this.props.getDataByCategory(category, id);
+    }
+
+    onChangeSearch = (e) =>{
+        this.setState({
+            [e.target.id]: e.target.value
+        })
     }
 
   render() {
       let {data} = this.props;
       let category = this.props.match.params.category;
-      let header = category.toUpperCase()
+      let header = category.toUpperCase();
+      console.log(this.state)
   return (
       <div>
                 <div className="gallery">
                     <div className="gallery-container">
                         <div className="header">
-                            <div className="h1-container">
-                                <h1>{header}</h1>
+                            <div className="h1-search-container">
+                                <div className="h1-container">
+                                    <h1>{header}</h1>
+                                </div>
+                                <div className="search-container">
+                                    <input type="text" id="searchInput" placeholder="Search Product..." onChange={this.onChangeSearch}/>
+                                    <button>SEARCH</button>
+                                </div>
                             </div>
                         </div>
                     <div className="items-container">
