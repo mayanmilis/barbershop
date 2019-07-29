@@ -11,6 +11,7 @@ class CartItem extends Component {
   return (
     <div>
         {amount}
+        {name}
     </div>
   );
   }

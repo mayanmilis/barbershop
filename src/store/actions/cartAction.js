@@ -11,6 +11,7 @@ export const addToCart = (id,item,amount) => {
         let parseProduct = JSON.parse(sessionStorage.getItem("cart"));
         console.log(parseProduct[id])
         for(let key in parseProduct){
+            console.log(typeof parseProduct[key].item)
             cartData.push({id: key, amount: parseProduct[key].amount, item: parseProduct[key].item})
         }
         console.log(cartData)
