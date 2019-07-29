@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Gallery.scss';
 import {connect} from 'react-redux';
 import {getDataByCategory,getDataById} from '../../store/actions/getDataAction';
+import {addToCart} from '../../store/actions/cartAction';
 import Item from './Item';
 import {Link} from 'react-router-dom';
 
@@ -59,6 +60,14 @@ class ItemDetails extends Component {
         return newTotalPrice;
     }
 
+    addToCart = () =>{
+        const id = this.props.match.params.id;
+        console.log(id)
+        let item = this.props.itemDetails;
+        let amount = this.state.amount;
+        this.props.addToCart(id,item,amount);
+    }
+
     render() {
         let {itemDetails,recommendedItems} = this.props;
         let totalPrice = this.state.totalPrice;
@@ -73,7 +82,7 @@ class ItemDetails extends Component {
                 <div className="h1-container">
                     <div className="h1-cart-container">
                         <h1><Link to={`/gallery/${category}`}>{categoryHeader}</Link></h1>
-                        <Link to="/cart"><i class="fas fa-shopping-cart"></i></Link>
+                        <Link to="/cart"><i class="fas fa-shopping-cart" placeholder="Go To Cart" title="Go To Cart"></i></Link>
                     </div>
                 </div>
                 <div className="page-container">
@@ -94,7 +103,7 @@ class ItemDetails extends Component {
                             </div>
                             <div className="checkout">
                                     <button>BUY NOW</button>
-                                    <button><i class="fas fa-cart-plus" style={{fontSize:'1.5em'}}></i> ADD TO CART</button>
+                                    <button onClick={this.addToCart}><i class="fas fa-cart-plus" style={{fontSize:'1.5em'}}></i> ADD TO CART</button>
                                 </div>
                             <div className="description">
                                 <p>Lorem members across the country. Proin vitae hendrerit dui, and the time for the region. Before the very first basketball set their jaws grief and clinical care; It is a whole lot of television or been targeted. In soccer care networks. Chat laughter and sorrow, sem graduated deductible carrots. Now set mourning element. Financing need complete freedom. Suspendi salad temperature.</p>
@@ -136,17 +145,20 @@ const mapStateToProps = (state,ownProps) =>{
     let data = state.data;
     let itemDetails = data&&data.filter(item => item.id===id);
     itemDetails = itemDetails[0]&&itemDetails[0].data;
-debugger
+    let cart = state.cart
+    console.log(cart);
     return{
         itemDetails: itemDetails,
-        recommendedItems: data
+        recommendedItems: data,
+        cart: cart
     }
 } 
 
 const mapDispatchToProps = (dispatch) => {
     return {
       getDataById: (id,category) => dispatch(getDataById(id,category)),
-      getDataByCategory: (id,category) => dispatch(getDataByCategory(id,category))
+      getDataByCategory: (id,category) => dispatch(getDataByCategory(id,category)),
+      addToCart: (id,item,amount) => dispatch(addToCart(id,item,amount))
     }
   }
 

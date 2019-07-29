@@ -26,7 +26,12 @@ const cartReducer = (state = initialState, action) =>{
             console.log('something went wrong', action.err);
         case 'ADD_TO_CART':
             console.log('added to cart');
-            return state;
+            let cart = state.cart;
+            cart = action.cart;
+            return{
+                ...state,
+                cart: cart
+            }
         case 'ADD_TO_CART_ERR':
             console.log("something went wrong", action.err);
             default:

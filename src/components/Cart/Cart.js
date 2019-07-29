@@ -1,34 +1,65 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addToCart } from '../../store/actions/cartAction';
+import { addToCart,getCartData } from '../../store/actions/cartAction';
+import './Cart.scss';
+import CartItem from './CartItem';
 
 class Cart extends Component {
 
-    test = () =>{
-        this.props.addToCart('yona!!!!')
-    }
+  componentDidMount(){
+    this.props.getCartData();
+  }
 
   render() {
+    const {cart} = this.props;
   return (
-    <div>
-        <div>
-            Cart Component!!!!!!!!!!!!!!!!!!!!!!!
+    <div className="cart">
+      <div className="cart-container">
+        <div className="header">
+          <div className="h1-container">
+            <h1>Cart</h1>
+          </div>
         </div>
-        <button onClick={this.test}>Test</button>
+        <div className="items-container">
+          <div className="cart-list-container">
+            <ul>
+              {cart&&cart.map(item =>{
+                return(
+                  <li>
+                    <CartItem
+                    // name={item.item.modelName}
+                    amount={item.amount}
+                    // imgUrl={item.item.url}
+                    // price={item.item.price}
+                    />
+                    </li>
+                )
+              })}
+            </ul>
+          </div>
+        </div>
+        <div className="checkout-container">
+
+        </div>
+      </div>
+
     </div>
   );
   }
 }
 
 const mapStateToProps = (state) =>{
+  let cart = state.cart
+  console.log(cart)
     return{
-        cart: state.cart
+        cart: cart
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-      addToCart: (item) => dispatch(addToCart(item))
+      addToCart: (item) => dispatch(addToCart(item)),
+      getCartData: () => dispatch(getCartData())
     }
   }
 

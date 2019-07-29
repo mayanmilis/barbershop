@@ -77,3 +77,23 @@ export const getDataById = (id,category) => {
             }
         }
 }
+
+
+export const search = (category,searchInput) => {
+    let obj = JSON.parse(sessionStorage.getItem(category));
+    if(obj){         
+        return(dispatch) =>{
+            let data = [];
+            for(let key in obj){
+                data.push({id: key, data: obj[key]});
+            }
+            data = data.filter(item => item.data.modelName.toLowerCase().includes(searchInput.toLowerCase())===true);
+            try{
+                dispatch({ type: 'GET_DATA', data: data});
+            }
+            catch(err){
+                dispatch({type: "GET_DATA_ERR", err})
+            }
+        }
+    }
+}
