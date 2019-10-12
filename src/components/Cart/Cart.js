@@ -6,6 +6,7 @@ import CartItem from './CartItem';
 
 class Cart extends Component {
 
+
   componentDidMount(){
     this.props.getCartData();
   }
@@ -35,19 +36,30 @@ class Cart extends Component {
                     return(
                       <li>
                         <CartItem
-                        name={item.id}
-                        amount={item.amount}
-                        // imgUrl={item.item.url}
-                        // price={item.item.price}
+                          name={item.item&&item.item.modelName}
+                          amount={item.amount}
+                          imgUrl={item.item&&item.item.url}
+                          price={item.item&&item.item.price}
                         />
+                        <hr/> 
                         </li>
                     )
                   })}
                 </ul>
               </div>
-            </div>
-            <div className="checkout-container">
-    
+              <div className="checkout">
+                <div className="checkout-container">
+                  <div className="h2-header">
+                    <h2>CHECKOUT</h2>
+                  </div>
+                  <div className="total">
+                    <p>Total: </p>
+                  </div>
+                    <div className="buy">
+                    <button>BUY</button>
+                  </div>
+                  </div>
+                </div>
             </div>
           </div>
     

@@ -1,14 +1,14 @@
 
 export const addToCart = (id,item,amount) => {
-    let getItem = sessionStorage.getItem("cart");
+    let getItem = localStorage.getItem("cart");
     let cartData = [];
     if(getItem){
         getItem = JSON.parse(getItem);
         let product = {item: item, amount: amount}
         getItem[id] = product;
         getItem = JSON.stringify(getItem);
-        sessionStorage.setItem("cart",getItem);
-        let parseProduct = JSON.parse(sessionStorage.getItem("cart"));
+        localStorage.setItem("cart",getItem);
+        let parseProduct = JSON.parse(localStorage.getItem("cart"));
         console.log(parseProduct[id])
         for(let key in parseProduct){
             console.log(typeof parseProduct[key].item)
@@ -21,7 +21,7 @@ export const addToCart = (id,item,amount) => {
         let product = {item: item, amount: amount}
         list[id] = product;
         list = JSON.stringify(list);
-        sessionStorage.setItem("cart",list);
+        localStorage.setItem("cart",list);
         console.log(product)
         cartData.push({id: id, amount: amount, item: item})
     }
@@ -36,7 +36,7 @@ export const addToCart = (id,item,amount) => {
 }
 
 export const getCartData = () => {
-    let data = sessionStorage.getItem("cart");
+    let data = localStorage.getItem("cart");
     data = JSON.parse(data);
     let cart = [];
     for(let key in data){
