@@ -1,5 +1,5 @@
 const initialState = {
-    cart: ['atalef!!!!!!!'],
+    cart: [],
     data: []
 
 }
@@ -26,17 +26,28 @@ const cartReducer = (state = initialState, action) =>{
             console.log('something went wrong', action.err);
         case 'ADD_TO_CART':
             console.log('added to cart');
-            let cart = state.cart;
-            cart = action.cart;
+            let newCart = action.cart;
             return{
                 ...state,
-                cart: cart
+                cart: newCart
             }
         case 'ADD_TO_CART_ERR':
             console.log("something went wrong", action.err);
-            default:
-                return state;
+            // default:    
+            // return state;
+        case 'REMOVE_FROM_CART':
+        console.log('Removed from cart');
+        let removedCart = action.cart
+        return{
+            ...state,
+            cart: removedCart
+        }
+        case 'REMOVE_FROM_CART_ERR':
+            console.log("something went wrong", action.err);
+            default:    
+            return state;
     }
+    
 }
 
 export default cartReducer

@@ -34,12 +34,14 @@ class Cart extends Component {
                 <ul>
                   {cart&&cart.map(item =>{
                     return(
-                      <li>
+                      <li key = {item.id}>
                         <CartItem
                           name={item.item&&item.item.modelName}
                           amount={item.amount}
                           imgUrl={item.item&&item.item.url}
                           price={item.item&&item.item.price}
+                          item={item.item&&item.item}
+                          id={item.id}
                         />
                         <hr/> 
                         </li>

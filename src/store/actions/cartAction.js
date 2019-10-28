@@ -51,3 +51,33 @@ export const getCartData = () => {
         }
     }
 }
+
+export const removeFromCart = (id) =>{
+    let getItem = localStorage.getItem("cart");
+    let updatedCart =  JSON.parse(getItem);
+    let cart = [];
+    if(updatedCart[id]){
+        delete updatedCart[id];
+        updatedCart = JSON.stringify(updatedCart);
+        localStorage.setItem("cart",updatedCart);
+        let parseProduct = JSON.parse(localStorage.getItem("cart"));
+        for(let key in parseProduct){
+            cart.push({id: key, amount: parseProduct[key].amount, item: parseProduct[key].item})
+        }
+        console.log(cart)
+        return(dispatch) =>{
+            try{
+                dispatch({ type: 'REMOVE_FROM_CART', cart: cart});
+            }   
+            catch(err){
+                dispatch({type: "REMOVE_FROM_CART_ERR", err})
+            }
+        }
+    }else{
+        return null
+    }
+    // updatedCart = delete updatedCart[id];
+    // updatedCart = JSON.stringify(updatedCart);
+    // localStorage.setItem("cart",updatedCart);
+    // console.log(updatedCart)
+}
