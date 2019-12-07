@@ -4,6 +4,7 @@ import Item from './Item';
 import {getDataByCategory,search} from '../../store/actions/getDataAction';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import GalleryNavbar from '../Gallery_Navbar/Gallery_Navbar';
 
 
 class Gallery extends Component {
@@ -37,12 +38,14 @@ class Gallery extends Component {
   render() {
       let {data} = this.props;
       let category = this.props.match.params.category;
-      let header = category.toUpperCase();
+      let header = category[0].toUpperCase()+category.slice(1);
       console.log(this.state)
       if(data.length > 0){
         return (
-            <div>
                       <div className="gallery">
+                      <GalleryNavbar
+                      category={category}
+                      />
                           <div className="gallery-container">
                               <div className="header">
                                   <div className="h1-search-container">
@@ -74,7 +77,6 @@ class Gallery extends Component {
                           </div>
                           </div>
                       </div>
-            </div>
         );
       }else{
           return(

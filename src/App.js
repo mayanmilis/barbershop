@@ -12,14 +12,12 @@ import NavLinks from './components/NavLinks/Navlinks';
 function App() {
   return (
     <BrowserRouter>
-        <NavLinks/>
         <Route exact path="/" component={Dashboard}/>
         <Route path="/book/:id" component={Book}/>
         <Route path="/uploadImg" component={UploadImg}/>
         <Route exact path="/gallery/:category" component={Gallery}/>
         <Route path="/gallery/:category/:id" component={ItemDetails}/>
         <Route path="/cart" component={Cart}/>
-
     </BrowserRouter>
   );
 }

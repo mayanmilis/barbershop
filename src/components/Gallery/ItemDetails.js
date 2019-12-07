@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {getDataByCategory,getDataById} from '../../store/actions/getDataAction';
 import {addToCart} from '../../store/actions/cartAction';
 import Item from './Item';
+import GalleryNavbar from '../Gallery_Navbar/Gallery_Navbar';
 import {Link} from 'react-router-dom';
 
 
@@ -79,6 +80,9 @@ class ItemDetails extends Component {
 
         return(
             <div className="item-details-container">
+                <GalleryNavbar
+                category={category}
+                />
                 <div className="h1-container">
                     <div className="h1-cart-container">
                         <h1><Link to={`/gallery/${category}`}>{categoryHeader}</Link></h1>

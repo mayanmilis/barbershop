@@ -22,11 +22,12 @@ class Dashboard extends Component {
         this.initMap();
     }
 
-    initMap = () => {
-        let map = new window.google.maps.Map(document.getElementById('map'), {
+    initMap = async () => {
+        let map = await new window.google.maps.Map(document.getElementById('map'), {
           center: {lat: 32.089179, lng: 34.877495},
           zoom: 14
         });
+        console.log( map);
         let marker = new window.google.maps.Marker({
             position: {lat: 32.089179, lng: 34.877495},
             map: map,
@@ -86,6 +87,7 @@ class Dashboard extends Component {
         console.log(this.state.confirmationOpen)
         return(
             <div className="container">
+                    <NavLinks/>
                     <section id="home">
                         <CalendarModal 
                         calendarOpen={this.state.calendarOpen}

@@ -10,17 +10,19 @@ class Item extends Component {
         return(
           <div className="item">
           <div className="item-container">
+          <Link to={`/gallery/${category}/${id}`}>
               <div className="item-details">
-                <Link to={`/gallery/${category}/${id}`}>More Details</Link>
+                More Details
               </div>
+          </Link>
               <div className="img" style={{backgroundImage: `url(${imgUrl})`}}></div>
-              <div className="description-container">
+          </div>
+          <div className="description-container">
                 <div className="description">
                   <p id="itemName">{name}</p>
                   <p id="itemPrice">{price}</p>
                 </div>
               </div>
-          </div>
       </div>
         )
       }else{

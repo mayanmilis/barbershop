@@ -5,37 +5,46 @@ import { addToCart,removeFromCart } from '../../store/actions/cartAction';
 // import {increaseNumber,decreaseNumber} from '../../shared/functions';
 
 class CartItem extends Component {
-
-  state = {
-    totalPrice: '',
-    amount: '',
-    price: '',
-    name: '',
-    imgUrl: '',
-    totalPrice: '',
-    id: '',
-    item: ''
-
+  constructor(props) {
+    super(props);
+      this.state = {
+        totalPrice: '',
+        amount: props.amount,
+        price: props.price,
+        name: props.name,
+        imgUrl: props.imgUrl,
+        id: props.id,
+        item: props.item,
+        getCartData: props.getCartData
+      }
   }
 
-  async componentDidMount(){
-    let props = await this.props&&this.props;
-    let amount = props.amount;
-    let price = props.price;
-    let name = props.name;
-    let imgUrl = props.imgUrl;
-    let id = props.id;
-    let item = props.item;
-    let totalPrice = this.totalPrice(price);
-    totalPrice = totalPrice*amount;
+  // name={item.item&&item.item.modelName}
+  // amount={item.amount}
+  // imgUrl={item.item&&item.item.url}
+  // price={item.item&&item.item.price}
+  // item={item.item&&item.item}
+  // id={item.id}
+
+  // state = {
+  //   totalPrice: '',
+  //   amount: '',
+  //   price: '',
+  //   name: '',
+  //   imgUrl: '',
+  //   totalPrice: '',
+  //   id: '',
+  //   item: ''
+
+  // }
+
+componentDidMount(){
+    let totalPrice = this.totalPrice(this.state.price);
+    let amount = this.state.amount;
+    totalPrice = (totalPrice*amount).toFixed(2);
+    console.log(totalPrice)
     this.setState({
-      amount: amount,
-      price: price,
-      name: name,
-      imgUrl: imgUrl,
       totalPrice: totalPrice,
-      id: id,
-      item: item
     })
   }
 
@@ -57,6 +66,7 @@ class CartItem extends Component {
           totalPrice: newPrice
       });    
       this.addToCart();  
+      this.state.getCartData();
   }
 
   decreaseNumber = () =>{
@@ -75,6 +85,7 @@ class CartItem extends Component {
       }else{
           return null
       }
+      this.state.getCartData();
   }
 
   totalPrice = (price) =>{
@@ -103,7 +114,7 @@ class CartItem extends Component {
   return (
     <div className="cart-item">
         <div className="img" style={{backgroundImage:`url(${imgUrl})`}}></div>
-        <div>{this.state.amount}</div>
+        <div>{this.amount}</div>
         <div className="name" id="name" onChange={this.onChange}>{name}</div>
         <div className="amount">
           <div>
